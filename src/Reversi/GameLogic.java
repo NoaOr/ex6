@@ -1,115 +1,116 @@
 package Reversi;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class GameLogic {
     private boolean isRegular;
 
+    public GameLogic() {
+        this.isRegular = true;
+    }
+    /**
+     *
+     * @param coor
+     * @param value
+     * @param board
+     * @return the list of cells that need to be fliped
+     */
+    public List<Coordinate> findOptions(Coordinate coor,
+                                        Cell.Value value, Board board) {
 
-
-}
-
-
-
-RegularLogic ::RegularLogic() {
-        this->isRegular = true;
-        }
-/**
- *
- * @param coor
- * @param value
- * @param board
- * @return the list of cells that need to be fliped
- */
-        list<Coordinate> RegularLogic :: findOptions(Coordinate coor,
-        Cell::Value value, Board *board) const {
-
-        Cell :: Value otherVal;
-        Cell :: Value myVal = value;
-        list<Coordinate> cellsToFlip;
-        if (myVal == Cell ::X) {
-        otherVal = Cell ::O;
+        Cell.Value otherVal;
+        Cell.Value myVal = value;
+        List<Coordinate> cellsToFlip;
+        if (myVal == Cell.Value.X) {
+            otherVal = Cell.Value.O;
         } else {
-        otherVal = Cell ::X;
+            otherVal = Cell.Value.X;
         }
         // if the point is not on the board return empty list.
-        if(!this->isOnBoard(coor, board)) {
-        //return nullptr;
-        return list<Coordinate>();
+        if(!this.isOnBoard(coor, board)) {
+            //return nullptr;
+            return new ArrayList<Coordinate>();
         }
         int startX = coor.getRow();
         int startY = coor.getCol();
-        list<Coordinate> directions;
-        directions.push_back(Coordinate(0,1));
-        directions.push_back(Coordinate(0,-1));
-        directions.push_back(Coordinate(1,1));
-        directions.push_back(Coordinate(1,-1));
-        directions.push_back(Coordinate(1,0));
-        directions.push_back(Coordinate(-1,-1));
-        directions.push_back(Coordinate(-1,0));
-        directions.push_back(Coordinate(-1,1));
-        list<Coordinate> ::const_iterator iter;
+        List<Coordinate> directions;
+        directions.add(new Coordinate(0,1));
+        directions.add(new Coordinate(0,-1));
+        directions.add(new Coordinate(1,1));
+        directions.add(new Coordinate(1,-1));
+        directions.add(new Coordinate(1,0));
+        directions.add(new Coordinate(-1,-1));
+        directions.add(new Coordinate(-1,0));
+        directions.add(new Coordinate(-1,1));
+        //List<Coordinate> ::const_iterator iter;
 
-        for (iter = directions.begin(); iter != directions.end(); ++iter) {
-        int x = startX, y = startY;
-        // advance the coordinate to the direction that in the list:
-        x += iter->getRow();
-        y += iter->getCol();
-        Coordinate c = Coordinate(x, y);
+        for (int i = 0; i < directions.size(); i++) {
 
-        // if the cell on the board and the value is not my value:
-        // advance the cell in the same direction
-        if (isOnBoard(c, board) && board->getCellAt(c)->getValue() == otherVal) {
-        x += iter->getRow();
-        y += iter->getCol();
-        c = Coordinate(x, y);
+        //for (iter = directions.begin(); iter != directions.end(); ++iter) {
+            int x = startX, y = startY;
+            // advance the coordinate to the direction that in the list:
+            x += directions.get(i).getRow();
+            y += directions.get(i).getCol();
+            Coordinate c = new Coordinate(x, y);
 
-        if (!isOnBoard(c, board)) {
-        continue;
-        }
+            // if the cell on the board and the value is not my value:
+            // advance the cell in the same direction
+            if (isOnBoard(c, board) && board.getCellAt(c).getValue() == otherVal) {
+                x += directions.get(i).getRow();
+                y += directions.get(i).getCol();
+                c = new Coordinate(x, y);
 
-        if (board->getCellAt(c)->getValue() == myVal) {
-        x -= iter->getRow();
-        y -= iter->getCol();
-        Coordinate coordinate = Coordinate(x, y);
-        cellsToFlip.push_back(coordinate);
-        x += iter->getRow();
-        y += iter->getCol();
-        }
-        while (board->getCellAt(c)->getValue() == otherVal) {
-        x += iter->getRow();
-        y += iter->getCol();
-        c = Coordinate(x, y);
-        if (!isOnBoard(c, board)) {
-        break;
-        }
-        }
+                if (!isOnBoard(c, board)) {
+                    continue;
+                }
 
-        if (isOnBoard(c, board)) {
-        if (board->getCellAt(c)->getValue() == myVal) {
-        while (x != startX || y != startY) {
-        x -= iter->getRow();
-        y -= iter->getCol();
-        c = Coordinate(x, y);
-        cellsToFlip.push_back(c);
-        }
-        }
-        }
-        }
+                if (board.getCellAt(c).getValue() == myVal) {
+                    x -= directions.get(i).getRow();
+                    y -= directions.get(i).getCol();
+                    Coordinate coordinate = new Coordinate(x, y);
+                    cellsToFlip.add(coordinate);
+                    x += directions.get(i).getRow();
+                    y += directions.get(i).getCol();
+                }
+                while (board.getCellAt(c).getValue() == otherVal) {
+                    x += directions.get(i).getRow();
+                    y += directions.get(i).getCol();
+                    c = new Coordinate(x, y);
+                    if (!isOnBoard(c, board)) {
+                        break;
+                    }
+                }
+
+                if (isOnBoard(c, board)) {
+                    if (board.getCellAt(c).getValue() == myVal) {
+                        while (x != startX || y != startY) {
+                            x -= directions.get(i).getRow();
+                            y -= directions.get(i).getCol();
+                            c = new Coordinate(x, y);
+                            cellsToFlip.add(c);
+                        }
+                    }
+                }
+            }
 
         }
         if (cellsToFlip.size() == 0) {
-        return list<Coordinate>();
+            return new ArrayList<Coordinate>();
         }
         return cellsToFlip;
 
 
-        }
-        bool RegularLogic ::isRegularRules() const {
-        return this->isRegular;
-        }
+    }
+    public boolean isRegular(){
+        return this.isRegular;
+    }
 
 
-        bool RegularLogic :: isOnBoard(Coordinate coor, Board *board) const{
+    boolean isOnBoard(Coordinate coor, Board board) {
         int y = coor.getCol(), x = coor.getRow();
-        int colSize = board->getColSize() - 1, rowSize = board->getRowSize() - 1;
+        int colSize = board.getColSize() - 1, rowSize = board.getRowSize() - 1;
         return (x >= 0 && x <= rowSize && y >= 0 && y <= colSize);
-        }
+    }
+
+}
