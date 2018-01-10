@@ -22,10 +22,10 @@ public class GameLogic {
         Cell.Value otherVal;
         Cell.Value myVal = value;
         List<Coordinate> cellsToFlip = new ArrayList<Coordinate>();
-        if (myVal == Cell.Value.X) {
-            otherVal = Cell.Value.O;
+        if (myVal == Cell.Value.Player1Val) {
+            otherVal = Cell.Value.Player2Val;
         } else {
-            otherVal = Cell.Value.X;
+            otherVal = Cell.Value.Player1Val;
         }
         // if the point is not on the board return empty list.
         if(!this.isOnBoard(coor, board)) {

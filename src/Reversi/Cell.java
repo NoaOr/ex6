@@ -4,9 +4,9 @@ public class Cell {
 
     private Value value;
 
-    public enum Value {X, O, Empty};
+    public enum Value {Player1Val, Player2Val, Empty};
 
-    //static enum Value {X = "X", O = "O", Empty = " "};
+    //static enum Value {Player1Val = "Player1Val", Player2Val = "Player2Val", Empty = " "};
     public Cell (Value value) {
         this.value = value;
     }

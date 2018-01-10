@@ -24,10 +24,10 @@ public class Board {
 
         int midRow = rowSize / 2 - 1;
         int midCol = colSize / 2 - 1;
-        this.boardTable[midRow][midCol].setValue(Cell.Value.O);
-        this.boardTable[midRow + 1][midCol + 1].setValue(Cell.Value.O);
-        this.boardTable[midRow][midCol + 1].setValue(Cell.Value.X);
-        this.boardTable[midRow + 1][midCol].setValue(Cell.Value.X);
+        this.boardTable[midRow][midCol].setValue(Cell.Value.Player2Val);
+        this.boardTable[midRow + 1][midCol + 1].setValue(Cell.Value.Player2Val);
+        this.boardTable[midRow][midCol + 1].setValue(Cell.Value.Player1Val);
+        this.boardTable[midRow + 1][midCol].setValue(Cell.Value.Player1Val);
 
     }
     /**
