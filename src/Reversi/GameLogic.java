@@ -21,7 +21,7 @@ public class GameLogic {
 
         Cell.Value otherVal;
         Cell.Value myVal = value;
-        List<Coordinate> cellsToFlip;
+        List<Coordinate> cellsToFlip = new ArrayList<Coordinate>();
         if (myVal == Cell.Value.X) {
             otherVal = Cell.Value.O;
         } else {
@@ -34,7 +34,7 @@ public class GameLogic {
         }
         int startX = coor.getRow();
         int startY = coor.getCol();
-        List<Coordinate> directions;
+        List<Coordinate> directions = new ArrayList<Coordinate>();
         directions.add(new Coordinate(0,1));
         directions.add(new Coordinate(0,-1));
         directions.add(new Coordinate(1,1));

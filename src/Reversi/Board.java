@@ -39,7 +39,7 @@ public class Board {
     public void updateBoard(Coordinate coordinate, Cell.Value changedTo) {
         int row = coordinate.getRow()-1;
         int col = coordinate.getCol()-1;
-        this->boardTable[row][col].setValue(changedTo);
+        this.boardTable[row][col].setValue(changedTo);
         Coordinate coor = new Coordinate(row, col);
         List<Coordinate> cellsToFlip;
         cellsToFlip =
