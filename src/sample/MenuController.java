@@ -16,9 +16,10 @@ public class MenuController {
     private Button settingsButton;
 
     @FXML
-    protected void startGame(Stage primaryStage) {
+    protected void startGame() {
         GameMain gameMain = new GameMain();
-        gameMain.start(primaryStage);
+        Stage stage = (Stage) startButton.getScene().getWindow();
+        gameMain.start(stage);
     }
 
     @FXML
