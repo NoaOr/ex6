@@ -19,7 +19,7 @@ public class BoardController extends GridPane{
         this.player2Color = player2Color;
         FXMLLoader fxmlLoader = new
                 FXMLLoader(getClass().getResource("BoardController.fxml"));
-        fxmlLoader.setRoot(this);
+//        fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
         try {
@@ -43,7 +43,7 @@ public class BoardController extends GridPane{
             for (int j = 0; j < board[i].length; j++) {
                 if (board[i][j].getValue() == Cell.Value.Empty) {
                     this.add(new Rectangle(cellWidth, cellHeight,
-                            Color.WHITE), j, i);
+                            Color.YELLOW), j, i);
                 }
                 else if (board[i][j].getValue() == Cell.Value.Player1Val) {
                     this.add(new Rectangle(cellWidth, cellHeight,
@@ -58,22 +58,22 @@ public class BoardController extends GridPane{
     }
 
     public Color parseColor(String color) {
-        if (color == "Black") {
+        if (color.equals("Black")) {
             return Color.BLACK;
         }
-        else if (color == "White") {
+        else if (color.equals("White")) {
             return Color.WHITE;
         }
-        else if (color == "Yellow") {
+        else if (color.equals("Yellow")) {
             return Color.YELLOW;
         }
-        else if (color == "Green") {
+        else if (color.equals("Green")) {
             return Color.GREEN;
         }
-        else if (color == "Blue") {
+        else if (color.equals("Blue")) {
             return Color.BLUE;
         }
-        else if (color == "Red") {
+        else if (color.equals("Red")) {
             return Color.RED;
         }
         return Color.BLACK;

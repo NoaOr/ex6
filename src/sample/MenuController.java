@@ -1,5 +1,6 @@
 package sample;
 
+import Reversi.GameMain;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
@@ -15,8 +16,9 @@ public class MenuController {
     private Button settingsButton;
 
     @FXML
-    private void startGame(Stage primaryStage) {
-
+    protected void startGame(Stage primaryStage) {
+        GameMain gameMain = new GameMain();
+        gameMain.start(primaryStage);
     }
 
     @FXML

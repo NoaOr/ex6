@@ -88,7 +88,7 @@ public class SettingsController {
             writer.write("open player : " + openPlayer + "\n");
             writer.write("player 1 color : " + player1Color + "\n");
             writer.write("player 2 color : " + player2Color + "\n");
-            writer.write("board size: " + boardSize);
+            writer.write("board size : " + boardSize + "\n");
 
         } catch (IOException ex) {
             // report
