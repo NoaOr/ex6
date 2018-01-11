@@ -22,7 +22,7 @@ public interface Player {
      * The function handles the case that the player had no moves.
      * @param screen - the screen to show that he has no moves.
      */
-    void movePasses(Screen screen, char value);
+    void movePasses(Screen screen, String value);
     /**
      * The function shows what the player chose.
      * @param c - the chosen coordinate.
@@ -30,6 +30,6 @@ public interface Player {
      */
     void showChoice(Coordinate c, Screen screen);
 
-    char valueToChar(Cell.Value val);
+    String valueToString(Cell.Value val);
 
 }
