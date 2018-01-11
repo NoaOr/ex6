@@ -1,11 +1,15 @@
 package Reversi;
 
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -29,13 +33,13 @@ public class BoardController extends GridPane{
 
 
     public BoardController(Board board, String player1Color,
-            String player2Color) {
+            String player2Color, final GameFlow gameFlow) {
         this.board = board;
         this.player1Color = player1Color;
         this.player2Color = player2Color;
         FXMLLoader fxmlLoader = new
                 FXMLLoader(getClass().getResource("BoardController.fxml"));
-//        fxmlLoader.setRoot(this);
+   ///     fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
             fxmlLoader.load();
@@ -50,6 +54,8 @@ public class BoardController extends GridPane{
                     int y = (int)event.getY();
                     x = x / cellHeight;
                     y = y / cellWidth;
+                    gameFlow.aKeyWasPressed(new Coordinate(x, y));
+
 //                    System.out.println(x);
 //                    System.out.println(y);
                 }
@@ -66,7 +72,6 @@ public class BoardController extends GridPane{
         int width = (int)this.getPrefWidth();
         int cellHeight = height / board.getRowSize();
         int cellWidth = width / board.getColSize();
-
 
         for (int i = 0; i < board.getRowSize(); i++) {
             for (int j = 0; j < board.getColSize(); j++) {

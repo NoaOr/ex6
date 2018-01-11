@@ -77,19 +77,21 @@ public class GameController implements Initializable {
 public void initialize(URL location, ResourceBundle resources) {
         this.createBoardFromFile();
         GameLogic gameLogic = new GameLogic();
+        GameFlow gameFlow = new GameFlow(gameLogic, player1, player2, board);
         BoardController boardController = new BoardController(this.board, player1Color,
-                player2Color);
+                player2Color, gameFlow);
         this.player1 = new HumanPlayer(Cell.Value.Player1Val, gameLogic,
                 boardController, boardController.parseColor(this.player1Color));
         this.player2 = new HumanPlayer(Cell.Value.Player2Val, gameLogic,
                 boardController, boardController.parseColor(this.player2Color));
         boardController.setPlayer1(player1);
         boardController.setPlayer2(player2);
+        gameFlow.setPlayer1(player1);
+        gameFlow.setPlayer2(player2);
         boardController.setPrefWidth(400);
         boardController.setPrefHeight(400);
         root.getChildren().add(0, boardController);
         boardController.draw();
-        GameFlow gameFlow = new GameFlow(gameLogic, player1, player2, board);
         gameFlow.run();
     }
 }
