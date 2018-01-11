@@ -10,31 +10,39 @@ import javafx.scene.shape.Rectangle;
 import java.io.IOException;
 
 public class BoardController extends GridPane{
-    private Cell[][] board;
+    private final Board board;
     private String player1Color;
     private String player2Color;
     private HumanPlayer player1;
-    private HumanPlayer player2;
 
-    public BoardController(Cell[][] board, String player1Color,
+    public void setPlayer1(HumanPlayer player1) {
+        this.player1 = player1;
+    }
+
+    public void setPlayer2(HumanPlayer player2) {
+        this.player2 = player2;
+    }
+
+    private HumanPlayer player2;
+    private final int prefHeight = 400;
+    private final int prefWidth = 400;
+
+
+    public BoardController(Board board, String player1Color,
             String player2Color) {
         this.board = board;
         this.player1Color = player1Color;
         this.player2Color = player2Color;
-        this.player1 = new HumanPlayer(Cell.Value.Player1Val, new GameLogic(),
-                this, parseColor(player1Color));
-        this.player2 = new HumanPlayer(Cell.Value.Player2Val, new GameLogic(),
-                this, parseColor(player2Color));
         FXMLLoader fxmlLoader = new
                 FXMLLoader(getClass().getResource("BoardController.fxml"));
 //        fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
-        int height = (int)this.getPrefHeight();
-        int width = (int)this.getPrefWidth();
-        final int cellHeight = height / board.length;
-        final int cellWidth = width / board[0].length;
         try {
             fxmlLoader.load();
+//            int height = (int)this.getPrefHeight();
+//            int width = (int)this.getPrefWidth();
+            final int cellHeight = prefHeight / board.getRowSize();
+            final int cellWidth = prefWidth / board.getColSize();
             this.setOnMousePressed(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
@@ -42,8 +50,8 @@ public class BoardController extends GridPane{
                     int y = (int)event.getY();
                     x = x / cellHeight;
                     y = y / cellWidth;
-                    System.out.println(x);
-                    System.out.println(y);
+//                    System.out.println(x);
+//                    System.out.println(y);
                 }
             });
         } catch (IOException exception) {
@@ -56,22 +64,22 @@ public class BoardController extends GridPane{
         this.getChildren().clear();
         int height = (int)this.getPrefHeight();
         int width = (int)this.getPrefWidth();
-        int cellHeight = height / board.length;
-        int cellWidth = width / board[0].length;
+        int cellHeight = height / board.getRowSize();
+        int cellWidth = width / board.getColSize();
 
 
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                if (board[i][j].getValue() == Cell.Value.Empty) {
+        for (int i = 0; i < board.getRowSize(); i++) {
+            for (int j = 0; j < board.getColSize(); j++) {
+                if (board.getCellAt(new Coordinate(i, j)).getValue() == Cell.Value.Empty) {
                     this.add(new Rectangle(cellWidth, cellHeight,
                             Color.YELLOW), j, i);
                 }
-                else if (board[i][j].getValue() == Cell.Value.Player1Val) {
+                else if (board.getCellAt(new Coordinate(i, j)).getValue() == Cell.Value.Player1Val) {
                     this.add(new Rectangle(cellWidth, cellHeight,
                             parseColor(player1Color)), j, i);
                     player1.draw(cellWidth, cellHeight, i, j);
                 }
-                else if (board[i][j].getValue() == Cell.Value.Player2Val) {
+                else if (board.getCellAt(new Coordinate(i, j)).getValue() == Cell.Value.Player2Val) {
 //                    this.add(new Rectangle(cellWidth, cellHeight,
 //                            parseColor(player2Color)), j, i);
                     player2.draw(cellWidth, cellHeight, i, j);

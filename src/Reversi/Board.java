@@ -17,13 +17,19 @@ public class Board {
      * @param logic - the logic of the game.
      */
     public Board(int rowSize, int colSize, GameLogic logic){
-        this.gameLogic = logic;
         this.rowSize = rowSize;
         this.colSize = colSize;
+        this.gameLogic = logic;
         this.boardTable = new Cell[rowSize][rowSize];
 
+        for (int i = 0; i < this.rowSize; i++) {
+            for (int j = 0; j < colSize; j++) {
+                this.boardTable[i][j] = new Cell(Cell.Value.Empty);
+            }
+        }
+
         int midRow = rowSize / 2 - 1;
-        int midCol = colSize / 2 - 1;
+        int midCol = rowSize / 2 - 1;
         this.boardTable[midRow][midCol].setValue(Cell.Value.Player2Val);
         this.boardTable[midRow + 1][midCol + 1].setValue(Cell.Value.Player2Val);
         this.boardTable[midRow][midCol + 1].setValue(Cell.Value.Player1Val);
