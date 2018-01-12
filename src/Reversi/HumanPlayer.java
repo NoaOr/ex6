@@ -14,18 +14,10 @@ public class HumanPlayer implements Player{
     private Cell.Value value;
     private GameLogic logic;
     private boolean hasMove;
-    private GridPane grid;
-//    private int currentRow;
-//    private int currentCol;
-    private ImageView iv;
-    private Color color;
 
-    public HumanPlayer(Cell.Value value, GameLogic logic, GridPane grid, Color color) {
-        this.grid = grid;
-        // Load the player's image
-//        iv = new
-//                ImageView(getClass().getResource("minion.png").toExternalForm());
-        this.color = color;
+
+    public HumanPlayer(Cell.Value value, GameLogic logic) {
+
         this.value = value;
         this.logic = logic;
         this.hasMove = true;
@@ -150,11 +142,29 @@ public class HumanPlayer implements Player{
         return " ";
     }
 
-    public void draw(int cellWidth, int cellHeight, int currentRow, int currentCol) {
-//        iv.setFitWidth(cellWidth);
-//        iv.setFitHeight(cellHeight);
-//        grid.getChildren().remove(iv);
-        grid.add(new Rectangle(cellWidth, cellHeight, this.color), currentCol, currentRow);
-      //  grid.add(iv, currentCol, currentRow);
+//    public void draw(int cellWidth, int cellHeight, int currentRow, int currentCol) {
+////        iv.setFitWidth(cellWidth);
+////        iv.setFitHeight(cellHeight);
+////        grid.getChildren().remove(iv);
+//        grid.add(new Rectangle(cellWidth, cellHeight, this.color), currentCol, currentRow);
+//      //  grid.add(iv, currentCol, currentRow);
+//    }
+
+
+
+    public List<Coordinate> getOptionsList(Board board) {
+        List<Coordinate> optionsList = new ArrayList<Coordinate>();
+        int row = board.getRowSize(), col = board.getColSize();
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                Coordinate coor = new Coordinate(i, j);
+
+                if (!this.logic.findOptions(coor, this.value, board).isEmpty()
+                        && board.getCellAt(coor).getValue() == Cell.Value.Empty) {
+                    optionsList.add(coor);
+                }
+            }
+        }
+        return optionsList;
     }
 }

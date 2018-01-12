@@ -82,4 +82,16 @@ public class Board {
         Cell c = this.boardTable[x][y];
         return c;
     }
+
+    public String getPlayerScore(Cell.Value value) {
+        int score = 0;
+        for(int i = 0; i < this.rowSize; i++) {
+            for(int j = 0; j < this.colSize; j++) {
+                if (this.boardTable[i][j].getValue() ==value ){
+                    score ++;
+                }
+            }
+        }
+        return Integer.toString(score);
+    }
 }
