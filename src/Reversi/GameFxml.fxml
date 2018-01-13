@@ -6,12 +6,11 @@
 
 <HBox fx:id="root" prefHeight="231.0" prefWidth="93.0" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Reversi.GameController">
    <children>
-   <VBox prefHeight="231.0" prefWidth="376.0" spacing="10">
+   <VBox prefHeight="231.0" prefWidth="400.0" spacing="10">
       <children>
-          <Button>Start Game</Button>
-          <Button>End Game</Button>
+          <Button fx:id="endGame" onAction="#endGame">End Game</Button>
             <Label />
-            <Label fx:id="info" prefHeight="128.0" prefWidth="126.0" text="Label" />
+            <Label fx:id="info" prefHeight="128.0" prefWidth="400.0" text="Label" />
       </children>
    </VBox>
    </children>

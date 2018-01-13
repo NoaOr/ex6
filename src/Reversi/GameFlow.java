@@ -14,11 +14,11 @@ public class GameFlow {
     private GameLogic logic;
     private HumanPlayer player1;
     private HumanPlayer player2;
-    private Screen screen;
     private boolean isPlayer1Turn;
     private String player1Color;
     private String player2Color;
     private GameController controller;
+    private boolean isGameOver;
 
     public GameFlow(GameController controller, GameLogic logic, HumanPlayer player1, HumanPlayer player2,
                     Board board, String player1Color, String player2Color) {
@@ -30,33 +30,7 @@ public class GameFlow {
         this.player2Color = player2Color;
         this.isPlayer1Turn = true;
         this.controller = controller;
-    }
-
-    public void run() {
-//        this.screen.showBoard(this.board);
-
-        isPlayer1Turn = true;
-        while (player1.hasMoreMoves() || player2.hasMoreMoves()) {
-            if (this.isBoardFull()) {
-                break;
-            }
-            //   Coordinate coor = player1.doYourTurn(this.board, this.screen);
-            // if (player1.hasMoreMoves()) {
-            //   this.board.updateBoard(coor, player1.getVal());
-            // player1.showChoice(coor, screen);
-//            this.screen.showBoard(this.board);
-            //  }
-//            if (this.isBoardFull()) {
-//                break;
-//            }
-//            this.isPlayer1Turn = false;
-            // coor = player2.doYourTurn(this.board, this.screen);
-            //if (player2.hasMoreMoves()) {
-            //  this.board.updateBoard(coor, player2.getVal());
-            //player2.showChoice(coor, screen);
-//            this.screen.showBoard(this.board);
-        }
-        //this.screen.gameOverScreen(board);
+        this.isGameOver = false;
     }
 
 
@@ -73,22 +47,23 @@ public class GameFlow {
     }
 
 
-    public boolean aKeyWasPressed(Coordinate coor) {
-        /// לבדוק שהקוארדיננטה תקינה
+    public void aKeyWasPressed(Coordinate coor) {
         List<Coordinate> options;
         if (isPlayer1Turn) {
             options =  player1.getOptionsList(this.board);
             if (isValidCoordinate(options,coor)) {
                 this.board.updateBoard(coor, player1.getVal());
                 if (isBoardFull()) {
-                    return false;
+                    this.endGame();
+                    return;
                 }
                 // if player 2 has move
                 if (!this.player2.getOptionsList(board).isEmpty()) {
                      isPlayer1Turn = false;
                 } else {
                     if (this.player1.getOptionsList(board).isEmpty()) {
-                        return false;
+                        this.endGame();
+                        return;
                     }
                 }
             }
@@ -97,19 +72,19 @@ public class GameFlow {
             if (isValidCoordinate(options,coor)) {
                 this.board.updateBoard(coor, player2.getVal());
                 if (isBoardFull()) {
-                    return false;
+                    this.endGame();
+                    return;
                 }
                 if (!this.player1.getOptionsList(board).isEmpty()) {
                     isPlayer1Turn = true;
                 } else {
                     if (player2.getOptionsList(board).isEmpty()) {
-                        return false;
+                        this.endGame();
+                        return;
                     }
                 }
             }
         }
-        return true;
-
     }
 
     public boolean isValidCoordinate(List<Coordinate> options, Coordinate coor) {
@@ -134,6 +109,9 @@ public class GameFlow {
     }
 
     public void setGameInformation() {
+        if (isGameOver) {
+            return;
+        }
         String currentPlayer;
         if(isPlayer1Turn) {
             currentPlayer = this.player1Color;
@@ -147,6 +125,31 @@ public class GameFlow {
                                 this.player2Color + " player score: " + player2Score + "\n";
         this.controller.setInformation(information);
     }
+
+    public void endGame() {
+        this.isGameOver = true;
+        String message = "The game is over!\n\n";
+        String player1Score = this.board.getPlayerScore(this.player1.getVal());
+        String player2Score = this.board.getPlayerScore(this.player2.getVal());
+        int score1 = Integer.parseInt(player1Score);
+        int score2 = Integer.parseInt(player2Score);
+
+        if (score1 > score2) {
+            message = message + "The winner is " + player1Color + "!\n";
+        } else if (score2 > score1) {
+            message = message +"The winner is " + player2Color + "!\n";
+        } else {
+            message = message +"It's a Tie!\n";
+        }
+
+        message = message +this.player1Color + " player score: " + player1Score + "\n" +
+                this.player2Color + " player score: " + player2Score + "\n";
+        this.controller.setInformation(message);
+
+
+
+    }
+
 
 
 

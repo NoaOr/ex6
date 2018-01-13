@@ -2,8 +2,11 @@ package Reversi;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import sample.Menu;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -19,6 +22,8 @@ public class GameController implements Initializable {
     private HBox root;
     @FXML
     private Label info;
+    @FXML
+    private Button endGame;
     private Board board;
     private int boardSize;
     private String player1Color;
@@ -98,5 +103,14 @@ public void initialize(URL location, ResourceBundle resources) {
 
     public void setInformation (String information) {
         this.info.setText(information);
+    }
+
+    public void endGame() {
+        Menu menu = new Menu();
+        try {
+            menu.start((Stage) this.endGame.getScene().getWindow());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

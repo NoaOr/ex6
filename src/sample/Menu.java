@@ -12,7 +12,7 @@ public class Menu extends Application {
     public void start(Stage primaryStage) throws Exception{
         try {
             GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("MenuFxml.fxml"));
-            Scene scene = new Scene(root,400,350);
+            Scene scene = new Scene(root,600,450);
             scene.getStylesheets().add(getClass().getResource("MenuCss.css").toExternalForm());
             primaryStage.setTitle("Reversi");
             primaryStage.setScene(scene);

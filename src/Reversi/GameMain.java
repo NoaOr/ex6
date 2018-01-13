@@ -12,7 +12,7 @@ public class GameMain extends Application {
     public void start(Stage primaryStage) {
         try {
             HBox root = (HBox) FXMLLoader.load(getClass().getResource("GameFxml.fxml"));
-            Scene scene = new Scene(root,520,400);
+            Scene scene = new Scene(root,600,450);
             scene.getStylesheets().add(getClass().getResource("GameCss.css").toExternalForm());
             primaryStage.setTitle("Reversi game");
             primaryStage.setScene(scene);

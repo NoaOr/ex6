@@ -19,8 +19,8 @@ public class GuiBoard extends GridPane{
     private Board board;
     private GuiPlayer player1;
     private GuiPlayer player2;
-    private final int prefHeight = 400;
-    private final int prefWidth = 400;
+    private final int prefHeight = 450;
+    private final int prefWidth = 600;
 
     public GuiBoard(Board board, String player1Color,
                     String player2Color,
@@ -44,16 +44,11 @@ public class GuiBoard extends GridPane{
                     int y = (int)event.getY();
                     x = (x / cellHeight) + 1;
                     y = (y / cellWidth) + 1;
-                    boolean isGameContinue = gameFlow.aKeyWasPressed(new Coordinate(y, x));
-                    if (!isGameContinue) {
-                        GuiBoard.this.showEndOfGame();
-                        return;
-                    }
+                    gameFlow.aKeyWasPressed(new Coordinate(y, x));
                     List<Coordinate> options = gameFlow.getCurrentOptionList();
                     GuiBoard.this.draw();
                     gameFlow.setGameInformation();
                     GuiBoard.this.drawOptionList(options);
-                    //GuiBoard.this.showEndOfGame();
 
                 }
             });
@@ -73,7 +68,7 @@ public class GuiBoard extends GridPane{
 
         for (int i = 0; i < board.getRowSize(); i++) {
             for (int j = 0; j < board.getColSize(); j++) {
-                    Rectangle r = new Rectangle(cellWidth, cellHeight, Color.YELLOW);
+                    Rectangle r = new Rectangle(cellWidth, cellHeight, Color.TRANSPARENT);
                     r.setStroke(Color.BLACK);
                     this.add(r, j, i);
             }
@@ -82,13 +77,9 @@ public class GuiBoard extends GridPane{
         for (int i = 0; i < board.getRowSize(); i++) {
             for (int j = 0; j < board.getColSize(); j++) {
                 if (board.getCellAt(new Coordinate(i, j)).getValue() == Cell.Value.Player1Val) {
-//                    this.add(new Rectangle(cellWidth, cellHeight,
-//                            parseColor(player1Color)), j, i);
                     player1.draw(cellWidth, cellHeight, i, j, this);
                 }
                 else if (board.getCellAt(new Coordinate(i, j)).getValue() == Cell.Value.Player2Val) {
-//                    this.add(new Rectangle(cellWidth, cellHeight,
-//                            parseColor(player2Color)), j, i);
                     player2.draw(cellWidth, cellHeight, i, j, this);
                 }
             }
@@ -101,21 +92,17 @@ public class GuiBoard extends GridPane{
         int cellHeight = height / board.getRowSize();
         int cellWidth = width / board.getColSize();
         for (int i = 0; i < options.size(); i++) {
-            Rectangle r = new Rectangle(cellWidth, cellHeight, Color.YELLOW);
-            r.setStroke(Color.RED);
-            Circle c = new Circle(5, Color.RED);
+//            Rectangle r = new Rectangle(cellWidth, cellHeight, Color.TRANSPARENT);
+//            r.setStroke(Color.rgb(37, 187, 200));
+            Circle c = new Circle(5, Color.rgb(37, 187, 200));
             c.setStroke(Color.BLACK);
+//            c.setStrokeWidth(2);
+
+
 //            c.setCenterX(options.get(i).getCol() + 25);
 //            c.setCenterY(options.get(i).getCol() + 25);
             this.add(c, options.get(i).getCol(), options.get(i).getRow());
         }
     }
 
-    public void showEndOfGame() {
-        this.getChildren().clear();
-        Text text1 = new Text(25, 25, "Game Over!");
-        text1.setFill(Color.CHOCOLATE);
-        text1.setFont(Font.font(java.awt.Font.SERIF, 25));
-        this.getChildren().add(text1);
-    }
 }

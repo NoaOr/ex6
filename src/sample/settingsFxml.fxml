@@ -9,7 +9,7 @@
 
 <GridPane prefHeight="388.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SettingsController">
    <children>
-      <Label alignment="CENTER" prefHeight="44.0" prefWidth="353.0" text="Settings" GridPane.columnIndex="1">
+      <Label alignment="CENTER" prefHeight="44.0" prefWidth="193.0" text="Settings" GridPane.columnIndex="1">
          <font>
             <Font size="28.0" />
          </font>
@@ -19,10 +19,10 @@
       <ComboBox fx:id="boardSize" prefWidth="150.0" promptText="board size" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <Button fx:id="ok" alignment="BOTTOM_LEFT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#finish" text="OK" GridPane.columnIndex="2" GridPane.rowIndex="5" />
       <ComboBox fx:id="openPlayer" prefWidth="150.0" promptText="open player" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <Label prefHeight="15.0" prefWidth="98.0" text="open player:" GridPane.rowIndex="1" />
-      <Label prefHeight="15.0" prefWidth="113.0" text="player 1 color:" GridPane.rowIndex="2" />
-      <Label text="player 2 color:" GridPane.rowIndex="3" />
-      <Label text="board size:" GridPane.rowIndex="4" />
+      <Label prefHeight="15.0" prefWidth="174.0" text="open player:" GridPane.rowIndex="1" />
+      <Label prefHeight="15.0" prefWidth="177.0" text="player 1 color:" GridPane.rowIndex="2" />
+      <Label prefHeight="15.0" prefWidth="394.0" text="player 2 color:" GridPane.rowIndex="3" />
+      <Label prefHeight="15.0" prefWidth="189.0" text="board size:" GridPane.rowIndex="4" />
    </children>
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="600.0" minWidth="10.0" prefWidth="173.0" />
