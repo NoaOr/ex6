@@ -1,4 +1,6 @@
-
+.root {
+-fx-background-image: url("menubackground.jpg")
+}
 .label {
 -fx-font-size: 14px;
 -fx-font-weight: bold;

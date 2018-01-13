@@ -1,3 +1,6 @@
+.root {
+-fx-background-image: url("boardbackground.jpg")
+}
 .label {
 -fx-text-fill: black;
 -fx-font-size: 13px;

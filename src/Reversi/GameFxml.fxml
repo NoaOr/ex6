@@ -8,9 +8,9 @@
    <children>
    <VBox prefHeight="231.0" prefWidth="400.0" spacing="10">
       <children>
-          <Button fx:id="endGame" onAction="#endGame">End Game</Button>
             <Label />
             <Label fx:id="info" prefHeight="128.0" prefWidth="400.0" text="Label" />
+          <Button fx:id="endGame" onAction="#endGame" text="End Game">End Game</Button>
       </children>
    </VBox>
    </children>

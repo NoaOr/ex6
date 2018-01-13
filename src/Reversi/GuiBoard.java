@@ -19,8 +19,8 @@ public class GuiBoard extends GridPane{
     private Board board;
     private GuiPlayer player1;
     private GuiPlayer player2;
-    private final int prefHeight = 450;
-    private final int prefWidth = 600;
+    private final int prefHeight = 400;
+    private final int prefWidth = 400;
 
     public GuiBoard(Board board, String player1Color,
                     String player2Color,
