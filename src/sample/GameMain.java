@@ -1,4 +1,4 @@
-package Reversi;
+package sample;
 
 
 import javafx.application.Application;
@@ -11,7 +11,7 @@ public class GameMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            HBox root = (HBox) FXMLLoader.load(getClass().getResource("GameFxml.fxml"));
+            HBox root = (HBox) FXMLLoader.load(getClass().getResource("../sample/GameFxml.fxml"));
             Scene scene = new Scene(root,600,450);
             scene.getStylesheets().add(getClass().getResource("GameCss.css").toExternalForm());
             primaryStage.setTitle("Reversi game");

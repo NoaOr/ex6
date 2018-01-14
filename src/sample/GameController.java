@@ -1,12 +1,13 @@
-package Reversi;
+package sample;
 
+import Reversi.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import sample.Menu;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -91,6 +92,20 @@ public void initialize(URL location, ResourceBundle resources) {
 
     }
 
+
+
+//    root.widthProperty().addListener((observable, oldValue, newValue) -> {
+//        double boardNewWidth = newValue.doubleValue() - 120;
+//        guiBoard.setPrefWidth(boardNewWidth);
+//        guiBoard.draw();
+//    });
+//
+//    root.heightProperty().addListener((observable, oldValue, newValue) -> {
+//        guiBoard.setPrefHeight(newValue.doubleValue());
+//        guiBoard.draw();
+//    });
+
+
         guiBoard.setPrefWidth(400);
         guiBoard.setPrefHeight(400);
         root.getChildren().add(0, guiBoard);
@@ -112,5 +127,14 @@ public void initialize(URL location, ResourceBundle resources) {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Game Over");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+
+        alert.showAndWait();
     }
 }

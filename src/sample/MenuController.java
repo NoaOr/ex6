@@ -1,12 +1,8 @@
 package sample;
 
-import Reversi.GameMain;
 import javafx.fxml.FXML;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
-
-import java.awt.*;
 
 public class MenuController {
 

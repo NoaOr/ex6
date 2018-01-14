@@ -9,10 +9,10 @@ public class Coordinate {
         this.row = row;
         this.col = col;
     }
-    int getCol() {
+    public int getCol() {
         return this.col;
     }
-    int getRow() {
+    public int getRow() {
         return this.row;
     }
 }
