@@ -1,4 +1,4 @@
 open player : Player 1
-player 1 color : Black
-player 2 color : White
-board size : 8x8
+player 1 color : Red
+player 2 color : Black
+board size : 4x4
