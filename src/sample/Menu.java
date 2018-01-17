@@ -11,7 +11,9 @@ public class Menu extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         try {
-            GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("MenuFxml.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    (ClassLoader.getSystemClassLoader().getResource("MenuFxml.fxml")));
+            GridPane root = (GridPane) loader.load();
             Scene scene = new Scene(root,600,450);
             scene.getStylesheets().add(getClass().getResource("MenuCss.css").toExternalForm());
             primaryStage.setTitle("Reversi");
