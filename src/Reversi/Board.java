@@ -83,6 +83,11 @@ public class Board {
         return c;
     }
 
+    /**
+     * The function returns the current player's score.
+     * @param value - the value of the player.
+     * @return - string of the score.
+     */
     public String getPlayerScore(Cell.Value value) {
         int score = 0;
         for(int i = 0; i < this.rowSize; i++) {

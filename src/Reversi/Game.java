@@ -10,24 +10,40 @@ public class Game {
     private int boardSize;
     private String player1Color;
     private String player2Color;
+    private String openPlayer;
 
+    /**
+     *
+     * @return the board size.
+     */
     public int getBoardSize() {
         return boardSize;
     }
 
+    /**
+     *
+     * @return player 1 color.
+     */
     public String getPlayer1Color() {
         return player1Color;
     }
 
+    /**
+     *
+     * @return player 2 color.
+     */
     public String getPlayer2Color() {
         return player2Color;
     }
 
+    /**
+     *
+     * @return the open player.
+     */
     public String getOpenPlayer() {
         return openPlayer;
     }
 
-    private String openPlayer;
 
     public Game(String fileName) {
         BufferedReader br = null;
