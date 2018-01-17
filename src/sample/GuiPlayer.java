@@ -23,16 +23,9 @@ public class GuiPlayer {
     public void draw(int cellWidth, int cellHeight,
                      int currentRow, int currentCol, GridPane gridPane) {
         Color color = parseColor(colorStr);
-
-        int i = currentCol + 25;
-        int j = currentRow + 25;
-        int radius = (cellHeight / 2);
         Rectangle r = new Rectangle(cellWidth, cellHeight, color);
         r.setStroke(Color.BLACK);
-        Circle c = new Circle(radius, i, j);
-//        c.setStroke(Color.BLACK);
         gridPane.add(r, currentCol, currentRow);
-        //  grid.add(iv, currentCol, currentRow);
     }
 
 

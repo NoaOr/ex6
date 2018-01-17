@@ -79,13 +79,13 @@ public class GameFlow {
                      isPlayer1Turn = false;
                 } else {
                     //player 2 has no move
-                    this.controller.showAlert(noMove,
-                            player2Color + " player has no move!\n" +
-                                    "It's " + player1Color + " player turn.");
                     if (this.player1.getOptionsList(board).isEmpty()) {
                         this.endGame();
                         return;
                     }
+                    this.controller.showAlert(noMove,
+                            player2Color + " player has no move!\n" +
+                                    "It's " + player1Color + " player turn.");
                 }
             }
         } else {
@@ -100,13 +100,13 @@ public class GameFlow {
                     isPlayer1Turn = true;
                 } else {
                     //player 1 has no move
-                    this.controller.showAlert(noMove,
-                            player1Color + " player has no move!\n" +
-                                    "It's " + player2Color + " player turn.");
                     if (player2.getOptionsList(board).isEmpty()) {
                         this.endGame();
                         return;
                     }
+                    this.controller.showAlert(noMove,
+                            player1Color + " player has no move!\n" +
+                                    "It's " + player2Color + " player turn.");
                 }
             }
         }

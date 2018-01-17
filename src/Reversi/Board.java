@@ -35,6 +35,16 @@ public class Board {
         this.boardTable[midRow][midCol + 1].setValue(Cell.Value.Player1Val);
         this.boardTable[midRow + 1][midCol].setValue(Cell.Value.Player1Val);
 
+//        this.boardTable[0][3].setValue(Cell.Value.Player1Val);
+//        this.boardTable[1][3].setValue(Cell.Value.Player1Val);
+//        this.boardTable[2][3].setValue(Cell.Value.Player1Val);
+//        this.boardTable[3][3].setValue(Cell.Value.Player1Val);
+//
+//        this.boardTable[0][2].setValue(Cell.Value.Player2Val);
+//        this.boardTable[1][2].setValue(Cell.Value.Player2Val);
+//        this.boardTable[2][2].setValue(Cell.Value.Player2Val);
+//        this.boardTable[3][2].setValue(Cell.Value.Player2Val);
+
     }
     /**
      * this function needs to flip all the cells in the
