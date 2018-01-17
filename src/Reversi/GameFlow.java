@@ -3,9 +3,8 @@ package Reversi;
 //#define BOARD_SIZE 8
 
 
-import javafx.stage.Stage;
+import sample.GameController;
 
-import java.net.HttpURLConnection;
 import java.util.List;
 
 public class GameFlow {
@@ -144,7 +143,9 @@ public class GameFlow {
 
         message = message +this.player1Color + " player score: " + player1Score + "\n" +
                 this.player2Color + " player score: " + player2Score + "\n";
-        this.controller.setInformation(message);
+        this.controller.setInformation("Game Over!");
+        this.controller.showAlert(message);
+
 
 
 

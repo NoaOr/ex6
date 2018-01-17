@@ -1,17 +1,16 @@
-package Reversi;
+package sample;
 
+import Reversi.*;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -89,18 +88,11 @@ public class GuiBoard extends GridPane{
     public void drawOptionList(List<Coordinate> options) {
         int height = (int)this.getPrefHeight();
         int width = (int)this.getPrefWidth();
-        int cellHeight = height / board.getRowSize();
-        int cellWidth = width / board.getColSize();
         for (int i = 0; i < options.size(); i++) {
-//            Rectangle r = new Rectangle(cellWidth, cellHeight, Color.TRANSPARENT);
-//            r.setStroke(Color.rgb(37, 187, 200));
             Circle c = new Circle(5, Color.rgb(37, 187, 200));
             c.setStroke(Color.BLACK);
-//            c.setStrokeWidth(2);
-
-
-//            c.setCenterX(options.get(i).getCol() + 25);
-//            c.setCenterY(options.get(i).getCol() + 25);
+            this.setHalignment(c, HPos.CENTER);
+            this.setValignment(c, VPos.CENTER);
             this.add(c, options.get(i).getCol(), options.get(i).getRow());
         }
     }
