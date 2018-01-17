@@ -91,21 +91,6 @@ public void initialize(URL location, ResourceBundle resources) {
                 this.player1Color, gameFlow, humanPlayer1, humanPlayer2);
 
     }
-
-
-
-//    root.widthProperty().addListener((observable, oldValue, newValue) -> {
-//        double boardNewWidth = newValue.doubleValue() - 120;
-//        guiBoard.setPrefWidth(boardNewWidth);
-//        guiBoard.draw();
-//    });
-//
-//    root.heightProperty().addListener((observable, oldValue, newValue) -> {
-//        guiBoard.setPrefHeight(newValue.doubleValue());
-//        guiBoard.draw();
-//    });
-
-
         guiBoard.setPrefWidth(400);
         guiBoard.setPrefHeight(400);
         root.getChildren().add(0, guiBoard);
@@ -129,9 +114,9 @@ public void initialize(URL location, ResourceBundle resources) {
         }
     }
 
-    public void showAlert(String message) {
+    public void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Game Over");
+        alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
 
