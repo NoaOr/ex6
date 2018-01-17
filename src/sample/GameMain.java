@@ -11,7 +11,10 @@ public class GameMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            HBox root = (HBox) FXMLLoader.load(getClass().getResource("../sample/GameFxml.fxml"));
+
+            FXMLLoader loader = new FXMLLoader(
+                    (ClassLoader.getSystemClassLoader().getResource("GameFxml.fxml")));
+            HBox root = loader.load();
             Scene scene = new Scene(root,600,450);
             scene.getStylesheets().add(getClass().getResource("GameCss.css").toExternalForm());
             primaryStage.setTitle("Reversi game");
