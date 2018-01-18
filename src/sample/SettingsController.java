@@ -43,6 +43,9 @@ public class SettingsController {
 
 
     @FXML
+    /**
+     * the function initialize the combo boxes.
+     */
     private void initialize() {
         openPlayer.setValue("Player 1");
         openPlayer.setItems(openPlayerList);
@@ -58,6 +61,9 @@ public class SettingsController {
 
     }
     @FXML
+    /**
+     * the function writes the settings to file and go back to menu.
+     */
     protected void finish() {
         String openPlayerStr = openPlayer.getValue().toString();
         String player1ColorStr = player1Color.getValue().toString();
@@ -76,6 +82,13 @@ public class SettingsController {
     }
 
     @FXML
+    /**
+     * the function writes the information to file
+     * @param openPlayer - open player
+     * @param player1Color - player 1 color
+     * @param player2Color - player 2 Color
+     * @param boardSize - board Size
+     */
     private void writeSettingsToFile
             (String openPlayer, String player1Color, String player2Color, String boardSize) {
 

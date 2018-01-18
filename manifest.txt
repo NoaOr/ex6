@@ -1,2 +1,2 @@
-Main-Class: sample.Menu
+Main-Class: Menu
 

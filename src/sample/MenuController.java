@@ -13,6 +13,9 @@ public class MenuController {
     private Button settingsButton;
 
     @FXML
+    /**
+     * the function creates game main when the startButton is pressed.
+     */
     protected void startGame() {
         GameMain gameMain = new GameMain();
         Stage stage = (Stage) startButton.getScene().getWindow();
@@ -20,6 +23,9 @@ public class MenuController {
     }
 
     @FXML
+    /**
+     * the function creates settings screen when the settingsButton is pressed.
+     */
     protected void settings() {
         Settings settings = new Settings();
         Stage stage = (Stage) settingsButton.getScene().getWindow();

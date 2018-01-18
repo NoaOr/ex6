@@ -10,16 +10,24 @@ public class GuiPlayer {
     private HumanPlayer humanPlayer;
     private String colorStr;
 
+    /**
+     * constructor.
+     * @param humanPlayer - human player
+     * @param colorStr - string of the player color.
+     */
     public GuiPlayer(HumanPlayer humanPlayer, String colorStr) {
         this.humanPlayer = humanPlayer;
         this.colorStr = colorStr;
-
-
-        // Load the player's image
-//        iv = new
-//                ImageView(getClass().getResource("minion.png").toExternalForm());
-
     }
+
+    /**
+     * the function draws rectangle in specific coordinate.
+     * @param cellWidth - cell width
+     * @param cellHeight - cell height
+     * @param currentRow - row
+     * @param currentCol - column
+     * @param gridPane - grid pane
+     */
     public void draw(int cellWidth, int cellHeight,
                      int currentRow, int currentCol, GridPane gridPane) {
         Color color = parseColor(colorStr);
@@ -28,6 +36,11 @@ public class GuiPlayer {
         gridPane.add(r, currentCol, currentRow);
     }
 
+    /**
+     * the function parses string of color to color object.
+     * @param color - string color
+     * @return color object according to the string.
+     */
 
     public Color parseColor(String color) {
         if (color.equals("Black")) {

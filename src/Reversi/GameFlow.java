@@ -130,7 +130,10 @@ public class GameFlow {
         return isInList;
     }
 
-
+    /**
+     * the function returns list of options considering the current player.
+     * @return - list of options
+     */
     public List<Coordinate> getCurrentOptionList() {
         if (isPlayer1Turn) {
             return player1.getOptionsList(this.board);
@@ -139,6 +142,9 @@ public class GameFlow {
         }
     }
 
+    /**
+     * the fuction set the information in the screen (scores and current player).
+     */
     public void setGameInformation() {
         if (isGameOver) {
             return;
@@ -157,6 +163,10 @@ public class GameFlow {
         this.controller.setInformation(information);
     }
 
+    /**
+     * the function checks who wins the game and
+     * updates the information label.
+     */
     public void endGame() {
         this.isGameOver = true;
         String message = "The game is over!\n\n";

@@ -20,7 +20,17 @@ public class GuiBoard extends GridPane{
     private GuiPlayer player2;
     private final int prefHeight = 400;
     private final int prefWidth = 400;
+    private final int radius = 5;
 
+    /**
+     * constructor.
+     * @param board- board
+     * @param player1Color - player 1 color
+     * @param player2Color- player 2 color
+     * @param gameFlow - game flow
+     * @param humanPlayer1 - player 1
+     * @param humanPlayer2 - player 2
+     */
     public GuiBoard(Board board, String player1Color,
                     String player2Color,
                     final GameFlow gameFlow, HumanPlayer humanPlayer1, HumanPlayer humanPlayer2) {
@@ -55,7 +65,9 @@ public class GuiBoard extends GridPane{
         }
     }
 
-
+    /**
+     * the function draws the board.
+     */
     public void draw() {
         this.getChildren().clear();
         int height = (int)this.getPrefHeight();
@@ -84,11 +96,13 @@ public class GuiBoard extends GridPane{
         }
     }
 
+    /**
+     * the function shows the option coordinates on the screen.
+     * @param options - list of coordinates to show.
+     */
     public void drawOptionList(List<Coordinate> options) {
-        int height = (int)this.getPrefHeight();
-        int width = (int)this.getPrefWidth();
         for (int i = 0; i < options.size(); i++) {
-            Circle c = new Circle(5, Color.rgb(37, 187, 200));
+            Circle c = new Circle(radius, Color.rgb(37, 187, 200));
             c.setStroke(Color.BLACK);
             this.setHalignment(c, HPos.CENTER);
             this.setValignment(c, VPos.CENTER);

@@ -102,11 +102,13 @@ public class GameLogic {
 
 
     }
-    public boolean isRegular(){
-        return this.isRegular;
-    }
 
-
+    /**
+     * the function checks if the coordinate on the board.
+     * @param coor - coordinate to check
+     * @param board - board
+     * @return true if the coordinate on the board. else otherwise.
+     */
     boolean isOnBoard(Coordinate coor, Board board) {
         int y = coor.getCol(), x = coor.getRow();
         int colSize = board.getColSize() - 1, rowSize = board.getRowSize() - 1;

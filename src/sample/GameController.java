@@ -30,7 +30,15 @@ public class GameController implements Initializable {
     private String player1Color;
     private String player2Color;
     private String openPlayer;
+    private static final int defaultSize = 8;
+    private final int prefHeight = 400;
+    private final int prefWidth = 400;
 
+    /**
+     * the functions reads information from the setting file,
+     * creates board accordingly and save it as a member.
+     * @param gameLogic -game logic, for the board constructor.
+     */
     public void createBoardFromFile(GameLogic gameLogic) {
 
         String fileName = "settings.txt";
@@ -46,6 +54,10 @@ public class GameController implements Initializable {
                 settingsMap.put(parts[0], parts[1]);
             }
         } catch (IOException e) {
+            this.board = new Board(defaultSize, defaultSize, gameLogic);
+            this.openPlayer = "Player 1";
+            this.player1Color = "Black";
+            this.player2Color = "White";
             e.printStackTrace();
         } finally {
             try {
@@ -66,7 +78,14 @@ public class GameController implements Initializable {
         this.board = new Board(boardSize, boardSize, gameLogic);
 
     }
-@Override
+
+    /**
+     * the function all of the objects for the game,
+     * shows the board and make the game to run.
+     * @param location - location
+     * @param resources - resources
+     */
+    @Override
 public void initialize(URL location, ResourceBundle resources) {
     GameLogic gameLogic = new GameLogic();
     this.createBoardFromFile(gameLogic);
@@ -91,8 +110,8 @@ public void initialize(URL location, ResourceBundle resources) {
                 this.player1Color, gameFlow, humanPlayer1, humanPlayer2);
 
     }
-        guiBoard.setPrefWidth(400);
-        guiBoard.setPrefHeight(400);
+        guiBoard.setPrefWidth(prefWidth);
+        guiBoard.setPrefHeight(prefHeight);
         root.getChildren().add(0, guiBoard);
         guiBoard.draw();
         gameFlow.setGameInformation();
@@ -100,11 +119,18 @@ public void initialize(URL location, ResourceBundle resources) {
         guiBoard.drawOptionList(options);
     }
 
-
+    /**
+     * the function set the information label in the screen.
+     * @param information - information to write.
+     */
     public void setInformation (String information) {
         this.info.setText(information);
     }
 
+    /**
+     * end game Button's function.
+     * go back to menu.
+     */
     public void endGame() {
         Menu menu = new Menu();
         try {
@@ -114,6 +140,11 @@ public void initialize(URL location, ResourceBundle resources) {
         }
     }
 
+    /**
+     * the function shows alert.
+     * @param title - title for alert
+     * @param message - message for alert
+     */
     public void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

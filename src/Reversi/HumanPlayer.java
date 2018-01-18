@@ -40,8 +40,6 @@ public class HumanPlayer {
      * @return boolean
      */
 
-
-
     public List<Coordinate> getOptionsList(Board board) {
         List<Coordinate> optionsList = new ArrayList<Coordinate>();
         int row = board.getRowSize(), col = board.getColSize();
