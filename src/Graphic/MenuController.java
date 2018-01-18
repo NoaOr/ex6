@@ -1,4 +1,4 @@
-package sample;
+package Graphic;
 
 import javafx.fxml.FXML;
 import javafx.stage.Stage;

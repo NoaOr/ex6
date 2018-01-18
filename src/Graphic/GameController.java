@@ -1,4 +1,4 @@
-package sample;
+package Graphic;
 
 import Reversi.*;
 import javafx.fxml.FXML;
@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
@@ -46,18 +47,28 @@ public class GameController implements Initializable {
         FileReader fr = null;
         Map<String, String> settingsMap = new HashMap<String, String>();
         try {
-            fr = new FileReader(fileName);
-            br = new BufferedReader(fr);
-            String sCurrentLine;
-            while ((sCurrentLine = br.readLine()) != null) {
-                String[] parts = sCurrentLine.split(" : ");
-                settingsMap.put(parts[0], parts[1]);
+            if (new File(fileName).exists()) {
+                fr = new FileReader(fileName);
+                br = new BufferedReader(fr);
+                String sCurrentLine;
+                while ((sCurrentLine = br.readLine()) != null) {
+                    String[] parts = sCurrentLine.split(" : ");
+                    settingsMap.put(parts[0], parts[1]);
+                }
+                openPlayer = settingsMap.get("open player");
+                player1Color = settingsMap.get("player 1 color");
+                player2Color = settingsMap.get("player 2 color");
+                String size = settingsMap.get("board size");
+                String[] parts = size.split("x");
+                boardSize = Integer.parseInt(parts[0]);
+                this.board = new Board(boardSize, boardSize, gameLogic);
+            } else {
+                this.board = new Board(defaultSize, defaultSize, gameLogic);
+                this.openPlayer = "Player 1";
+                this.player1Color = "Black";
+                this.player2Color = "White";
             }
         } catch (IOException e) {
-            this.board = new Board(defaultSize, defaultSize, gameLogic);
-            this.openPlayer = "Player 1";
-            this.player1Color = "Black";
-            this.player2Color = "White";
             e.printStackTrace();
         } finally {
             try {
@@ -69,13 +80,6 @@ public class GameController implements Initializable {
                 ex.printStackTrace();
             }
         }
-        openPlayer = settingsMap.get("open player");
-        player1Color = settingsMap.get("player 1 color");
-        player2Color = settingsMap.get("player 2 color");
-        String size = settingsMap.get("board size");
-        String[] parts = size.split("x");
-        boardSize = Integer.parseInt(parts[0]);
-        this.board = new Board(boardSize, boardSize, gameLogic);
     }
 
     /**

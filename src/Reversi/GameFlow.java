@@ -3,7 +3,7 @@ package Reversi;
 //#define BOARD_SIZE 8
 
 
-import sample.GameController;
+import Graphic.GameController;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package sample;
+package Graphic;
 
 import Reversi.*;
 import javafx.event.EventHandler;

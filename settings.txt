@@ -1,4 +1,0 @@
-open player : Player 1
-player 1 color : Blue
-player 2 color : Green
-board size : 6x6
