@@ -16,11 +16,12 @@ public class Settings extends Application {
     public void start(Stage primaryStage) {
 
         try {
-
-            FXMLLoader loader = new FXMLLoader(
-                    (ClassLoader.getSystemClassLoader().getResource("settingsFxml.fxml")));
-            GridPane root = (GridPane) loader.load();
+            GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("settingsFxml.fxml"));
+//            FXMLLoader loader = new FXMLLoader(
+//                    (ClassLoader.getSystemClassLoader().getResource("res../../settingsFxml.fxml")));
+//            GridPane root = (GridPane) loader.load();
             Scene scene = new Scene(root,width,height);
+//            scene.getStylesheets().add(getClass().getResource("res../../SettingsCss.css").toExternalForm());
             scene.getStylesheets().add(getClass().getResource("SettingsCss.css").toExternalForm());
             primaryStage.setTitle("Settings");
             primaryStage.setScene(scene);

@@ -15,11 +15,14 @@ public class Menu extends Application {
      */
     public void start(Stage primaryStage) throws Exception{
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    (ClassLoader.getSystemClassLoader().getResource("MenuFxml.fxml")));
-            GridPane root = (GridPane) loader.load();
+            GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("MenuFxml.fxml"));
+//            scene.getStylesheets().add(getClass().getResource("res../../SettingsCss.css").toExternalForm());
+//            FXMLLoader loader = new FXMLLoader(
+//                    (ClassLoader.getSystemClassLoader().getResource("res../../MenuFxml.fxml")));
+//            GridPane root = (GridPane) loader.load();
             Scene scene = new Scene(root,width,height);
             scene.getStylesheets().add(getClass().getResource("MenuCss.css").toExternalForm());
+//            scene.getStylesheets().add(getClass().getResource("res../../MenuCss.css").toExternalForm());
             primaryStage.setTitle("Reversi");
             primaryStage.setScene(scene);
             primaryStage.show();

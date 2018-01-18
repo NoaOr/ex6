@@ -76,7 +76,6 @@ public class GameController implements Initializable {
         String[] parts = size.split("x");
         boardSize = Integer.parseInt(parts[0]);
         this.board = new Board(boardSize, boardSize, gameLogic);
-
     }
 
     /**

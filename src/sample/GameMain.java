@@ -16,11 +16,13 @@ public class GameMain extends Application {
      */
     public void start(Stage primaryStage) {
         try {
+            HBox root = (HBox) FXMLLoader.load(getClass().getResource("GameFxml.fxml"));
 
-            FXMLLoader loader = new FXMLLoader(
-                    (ClassLoader.getSystemClassLoader().getResource("GameFxml.fxml")));
-            HBox root = loader.load();
+//            FXMLLoader loader = new FXMLLoader(
+//                    (ClassLoader.getSystemClassLoader().getResource("res../../GameFxml.fxml")));
+//            HBox root = loader.load();
             Scene scene = new Scene(root,width,height);
+//            scene.getStylesheets().add(getClass().getResource("res../../GameCss.css").toExternalForm());
             scene.getStylesheets().add(getClass().getResource("GameCss.css").toExternalForm());
             primaryStage.setTitle("Reversi game");
             primaryStage.setScene(scene);
